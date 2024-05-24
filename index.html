@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>hello world</title>
 </head>
-<body>
+<body style="text-align:center; background:#123;">
   <h1>hello world</h1>
+  <video autoplay id="video"></video>
   <script>
+    const video = document.querySelector("#video");
+    console.log(video)
     window.onload = ()=>{
       fetch("https://e227913f-23df-476c-8c53-4b86d343226c-00-12umnxw44nkel.sisko.replit.dev/send-word",{
         method:"POST",

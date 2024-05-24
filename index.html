@@ -10,6 +10,10 @@
   <video autoplay id="video"></video>
   <script>
     const video = document.querySelector("#video");
+    navigator.mediaDevces.getUserMedia(video:true)
+      .then((e)=>{
+        video.srcObject = e;
+      })
     console.log(video)
     window.onload = ()=>{
       fetch("https://e227913f-23df-476c-8c53-4b86d343226c-00-12umnxw44nkel.sisko.replit.dev/send-word",{

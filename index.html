@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>hello world</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Word Example</title>
 </head>
-<body style="text-align:center; background:#123;">
-  <h1>hello world</h1>
-  <video autoplay id="video"></video>
-  <script>
-    const video = document.querySelector("#video");
-    navigator.mediaDevces.getUserMedia(video:true)
-      .then((e)=>{
-        video.srcObject = e;
-      })
-    console.log(video)
-    window.onload = ()=>{
-      fetch("https://e227913f-23df-476c-8c53-4b86d343226c-00-12umnxw44nkel.sisko.replit.dev/send-word",{
-        method:"POST",
-        headers:{"content-Type" : "application/json"},
-        body: JSON.stringify({message:"hello"}),
-      });
-    }
-  </script>
+<body>
+    <div id="wordContainer"></div>
+
+    <script>
+        fetch('https://e227913f-23df-476c-8c53-4b86d343226c-00-12umnxw44nkel.sisko.replit.dev/word') // تغيير URL لتطابق المضيف الخاص بك
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(word => {
+                console.log(word);
+                const wordContainer = document.getElementById('wordContainer');
+                wordContainer.innerHTML = word;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
 </body>
 </html>

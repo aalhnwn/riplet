@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Node.js Word Example</title>
+    <title>Document</title>
 </head>
 <body>
-    <div id="wordContainer"></div>
-
+    <p id="massage">null</p>
+    <input type="text" id="value">
+    <button id="send">send</button>
     <script>
-        fetch('https://e227913f-23df-476c-8c53-4b86d343226c-00-12umnxw44nkel.sisko.replit.dev/word') // تغيير URL لتطابق المضيف الخاص بك
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
+        const massage = document.getElementById('massage');
+        const values = document.getElementById('value');
+        const send = document.getElementById('send');
+        send.onclick = ()=>{
+            fetch('https://e227913f-23df-476c-8c53-4b86d343226c-00-12umnxw44nkel.sisko.replit.dev/data',{
+                method: "POST",
+                headers:{
+                    "content-Type":"application/json"
+                },
+                body: JSON.stringify({massages:values.value})
             })
-            .then(word => {
-                console.log(word);
-                const wordContainer = document.getElementById('wordContainer');
-                wordContainer.innerHTML = word;
+            .then(response=>{return response.json()})
+            .then(data=>{
+                massage.innerHTML = data.messages;
             })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+        }
     </script>
 </body>
 </html>

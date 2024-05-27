@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p id="massage">null</p>
+    <p id="massage"></p>
     <input type="text" id="value">
     <button id="send">send</button>
     <script>
@@ -23,9 +23,17 @@
             })
             .then(response=>{return response.json()})
             .then(data=>{
-                massage.innerHTML = data.messages;
+                const val = data.messages;
+                massage.innerHTML = val
+                console.log(val);
             })
         }
+        
+            fetch('https://e227913f-23df-476c-8c53-4b86d343226c-00-12umnxw44nkel.sisko.replit.dev/vals')
+                .then(response=>{return response.text()})
+                .then(vals=>{
+                    massage.innerHTML = vals;
+                })
     </script>
 </body>
 </html>

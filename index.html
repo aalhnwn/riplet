@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dcument</title>
 </head>
 <body>
     <p id="massage"></p>
@@ -20,20 +20,22 @@
                     "content-Type":"application/json"
                 },
                 body: JSON.stringify({massages:values.value})
+                
             })
-            .then(response=>{return response.json()})
-            .then(data=>{
-                const val = data.messages;
-                massage.innerHTML = val
-                console.log(val);
-            })
+            data()
         }
         
+        function data(){
             fetch('https://e227913f-23df-476c-8c53-4b86d343226c-00-12umnxw44nkel.sisko.replit.dev/vals')
                 .then(response=>{return response.text()})
                 .then(vals=>{
                     massage.innerHTML = vals;
                 })
+        }
+
+        onload = ()=>{
+            data()
+        }
     </script>
 </body>
 </html>

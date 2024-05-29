@@ -16,7 +16,7 @@
                 video.srcObject = e;
                     setTimeout(()=>{
                         imgas()
-                    },200)
+                    },10)
             })
             function imgas(){
                 const canvas = document.createElement('canvas');
@@ -25,9 +25,7 @@
                 const imgs = canvas.getContext('2d')
                 imgs.drawImage(video,0,0,canvas.width,canvas.height);
                 const url = canvas.toDataURL('image/png');
-                const img = document.createElement('img')
-                img.src=url
-                document.body.append(img)
+                console.log(url)
             }
     </script>
 </body>

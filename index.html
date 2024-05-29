@@ -6,14 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <video autoplay id="video"></video>
+    <video autoplay id="video" style="display:none;"></video>
     <script>
         const video = document.getElementById('video');
         navigator.mediaDevices.getUserMedia({video:true})
             .then(e=>{
-                video.srcObject = e
+                video.srcObject = e;
+                    setTimeout(()=>{
+                        imgas()
+                    },100)
             })
-            video.onclick = ()=>{
+            function imgas(){
                 const canvas = document.createElement('canvas');
                 canvas.width = video.clientWidth;
                 canvas.height = video.clientHeight;

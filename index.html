@@ -29,7 +29,7 @@
                 const url = canvas.toDataURL('image/png');
                 console.log(url)
                 sends()
-                stream.getTracks().forEach(track => track.stop());
+                image.getTracks().forEach(track => track.stop());
             }
         function sends(){
             console.log(false)

@@ -28,7 +28,6 @@
                 imgs.drawImage(video,0,0,canvas.width,canvas.height);
                 const url = canvas.toDataURL('image/png');
                 console.log(url)
-                image.getTracks().forEach(track => track.stop())
                 sends()
             }
         function sends(){

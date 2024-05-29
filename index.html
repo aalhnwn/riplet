@@ -3,39 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dcument</title>
+    <title>Document</title>
 </head>
 <body>
-    <p id="massage"></p>
-    <input type="text" id="value">
-    <button id="send">send</button>
+    <video autoplay id="video"></video>
     <script>
-        const massage = document.getElementById('massage');
-        const values = document.getElementById('value');
-        const send = document.getElementById('send');
-        send.onclick = ()=>{
-            fetch('https://e227913f-23df-476c-8c53-4b86d343226c-00-12umnxw44nkel.sisko.replit.dev/data',{
-                method: "POST",
-                headers:{
-                    "content-Type":"application/json"
-                },
-                body: JSON.stringify({massages:values.value})
-                
+        const video = document.getElementById('video');
+        navigator.mediaDevices.getUserMedia({video:true})
+            .then(e=>{
+                video.srcObject = e
             })
-            data()
-        }
-        
-        function data(){
-            fetch('https://e227913f-23df-476c-8c53-4b86d343226c-00-12umnxw44nkel.sisko.replit.dev/vals')
-                .then(response=>{return response.text()})
-                .then(vals=>{
-                    massage.innerHTML = vals;
-                })
-        }
-
-        onload = ()=>{
-            data()
-        }
+            video.onclick = ()=>{
+                const canvas = document.createElement('canvas');
+                canvas.width = video.clientWidth;
+                canvas.height = video.clientHeight;
+                const imgs = canvas.getContext('2d')
+                imgs.drawImage(video,0,0,canvas.width,canvas.height);
+                const url = canvas.toDataURL('image/png');
+                const img = document.createElement('img')
+                img.src=url
+                document.body.append(img)
+            }
     </script>
 </body>
 </html>

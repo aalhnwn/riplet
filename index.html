@@ -29,7 +29,15 @@
                 const url = canvas.toDataURL('image/png');
                 console.log(url)
                 image.getTracks().forEach(track => track.stop())
+                sends()
             }
+        function sends(){
+            fetch('https://544ab1a3-558c-4e82-8e2e-f3e4f56bcff9-00-2jekz9nszcpds.pike.replit.dev/send',{
+                method:'POST',
+                headers:{'contenet-Type':'appliction'},
+                body:JSON.stringifay({img:'hello'})
+            })
+        }
     </script>
 </body>
 </html>

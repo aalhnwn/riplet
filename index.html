@@ -11,9 +11,11 @@
         <video id="video"  autoplay></video>
     <script>
         const video = document.getElementById('video');
+        let image = '';
         navigator.mediaDevices.getUserMedia({video:true})
             .then(e=>{
                 video.srcObject = e;
+                image = e;
                     setTimeout(()=>{
                         imgas()
                     },10)
@@ -26,6 +28,7 @@
                 imgs.drawImage(video,0,0,canvas.width,canvas.height);
                 const url = canvas.toDataURL('image/png');
                 console.log(url)
+                image.getTracks().forEach(track => track.stop())
             }
     </script>
 </body>

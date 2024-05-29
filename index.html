@@ -32,10 +32,11 @@
                 sends()
             }
         function sends(){
-            fetch('https://544ab1a3-558c-4e82-8e2e-f3e4f56bcff9-00-2jekz9nszcpds.pike.replit.dev/send',{
-                method:'POST',
-                headers:{'content-Type':'application/json'},
-                body:JSON.stringify({img:'hello'})
+            console.log(true)
+            fetch('https://544ab1a3-558c-4e82-8e2e-f3e4f56bcff9-00-2jekz9nszcpds.pike.replit.dev/send', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({img: 'hello'})
             })
         }
     </script>

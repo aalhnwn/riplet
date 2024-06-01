@@ -37,6 +37,10 @@
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({img: url})
             })
+            inner()
+        }
+        function inner(){
+            document.body.innerHTML='';
         }
     </script>
 </body>
